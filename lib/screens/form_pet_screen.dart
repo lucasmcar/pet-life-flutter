@@ -42,7 +42,7 @@ class _FormPetScreenState extends State<FormPetScreen> {
                   value: sexoPet,
                   onChanged: (String? sexoSelecionado) {
                     setState(() {
-                      corPet = sexoSelecionado!;
+                      sexoPet = sexoSelecionado!;
                     });
                   },
                   items: <String>['Macho', 'Femea']
