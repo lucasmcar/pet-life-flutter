@@ -12,9 +12,6 @@ class Main extends StatelessWidget {
     return const MaterialApp(
         title: "Pet Life",
         home: HomeScreen(),
-        theme: ThemeData(
-          primaryColor: Colors.redAccent,
-        ),
         debugShowCheckedModeBanner: false);
   }
 }

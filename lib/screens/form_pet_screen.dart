@@ -10,6 +10,8 @@ class FormPetScreen extends StatefulWidget {
 }
 
 class _FormPetScreenState extends State<FormPetScreen> {
+  String corPet = 'Branco';
+  String sexoPet = 'Macho';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,13 +38,35 @@ class _FormPetScreenState extends State<FormPetScreen> {
                   keyboardType: TextInputType.number,
                   decoration: const InputDecoration(labelText: "Idade"),
                 ),
-                TextFormField(
-                  keyboardType: TextInputType.text,
-                  decoration: const InputDecoration(labelText: "Sexo"),
+                DropdownButtonFormField(
+                  value: sexoPet,
+                  onChanged: (String? sexoSelecionado) {
+                    setState(() {
+                      corPet = sexoSelecionado!;
+                    });
+                  },
+                  items: <String>['Macho', 'Femea']
+                      .map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                        value: value, child: Text(value));
+                  }).toList(),
                 ),
                 TextFormField(
                   keyboardType: TextInputType.text,
                   decoration: const InputDecoration(labelText: "Descrição"),
+                ),
+                DropdownButtonFormField(
+                  value: corPet,
+                  onChanged: (String? corSelecionada) {
+                    setState(() {
+                      corPet = corSelecionada!;
+                    });
+                  },
+                  items: <String>['Branco', 'Preto', 'Marron', 'Amarelo']
+                      .map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                        value: value, child: Text(value));
+                  }).toList(),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 12, bottom: 10),
