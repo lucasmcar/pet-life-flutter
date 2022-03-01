@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:lifepet_app/models/pet_model.dart';
 
 class PerfilPetScreen extends StatelessWidget {
-  const PerfilPetScreen({Key? key}) : super(key: key);
-
+  final Pet pet;
+  PerfilPetScreen({required this.pet});
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,13 +15,13 @@ class PerfilPetScreen extends StatelessWidget {
             Stack(
               children: [
                 Hero(
-                  tag: "ass",
+                  tag: pet.id,
                   child: Container(
                     width: double.infinity,
                     height: 350,
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                          image: AssetImage("ass"), fit: BoxFit.cover),
+                          image: AssetImage(pet.imageUrl), fit: BoxFit.cover),
                     ),
                   ),
                 ),
@@ -41,7 +43,7 @@ class PerfilPetScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "Nome do pet",
+                      pet.nome,
                       style: TextStyle(
                         fontFamily: "Monserrat",
                         fontSize: 24,
@@ -56,7 +58,7 @@ class PerfilPetScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "Descrição",
+                      pet.descricao,
                       style: TextStyle(
                           fontFamily: "Monserrat",
                           fontSize: 16,

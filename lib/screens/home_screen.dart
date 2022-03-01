@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lifepet_app/models/pet_model.dart';
 import 'package:lifepet_app/screens/form_pet_screen.dart';
+import 'package:lifepet_app/screens/pet/perfil_pet_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -16,8 +17,9 @@ class HomeScreen extends StatelessWidget {
           itemCount: pets.length),
       floatingActionButton: FloatingActionButton.extended(
           onPressed: () {
-            Navigator.of(context).push(MaterialPageRoute(
-              builder: (_) => FormPetScreen(),
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (_) => FormPetScreen(),
               ),
             );
           },
@@ -29,7 +31,11 @@ class HomeScreen extends StatelessWidget {
 
   Widget _petCard(BuildContext c, int index) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Navigator.of(c).push(MaterialPageRoute(
+          builder: (_) => PerfilPetScreen(pet: pets[index]),
+        ));
+      },
       child: Padding(
           padding: const EdgeInsets.only(
             bottom: 30,
