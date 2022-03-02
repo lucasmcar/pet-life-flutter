@@ -28,7 +28,8 @@ var pets = [
     idade: 2,
     sexo: "Macho",
     cor: "Marrom",
-    bio: "Sou um cachorro bem esperto",
+    bio: "Sou um cachorro bem esperto, brincalhão. " + 
+    "\n Independente. Muito manso e sempre bem receptivo ",
     id: "1"
   ),
   Pet(

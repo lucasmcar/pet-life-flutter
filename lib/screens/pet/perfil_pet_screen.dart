@@ -4,7 +4,39 @@ import 'package:lifepet_app/models/pet_model.dart';
 class PerfilPetScreen extends StatelessWidget {
   final Pet pet;
   PerfilPetScreen({required this.pet});
-  
+
+  Widget _cartaoPet(String label, String info) {
+    return Container(
+        margin: EdgeInsets.all(10),
+        width: 100,
+        decoration: BoxDecoration(
+          color: Colors.white70,
+          borderRadius: BorderRadius.circular(20),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              label,
+              style: TextStyle(
+                  fontFamily: "Montserrat",
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.red),
+            ),
+            SizedBox(height: 8),
+            Text(
+              info,
+              style: TextStyle(
+                  fontFamily: "Montserrat",
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.black),
+            ),
+          ],
+        ));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,9 +68,9 @@ class PerfilPetScreen extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Padding(
-                padding: EdgeInsets.symmetric(horizontal: 40),
+                padding: const EdgeInsets.symmetric(horizontal: 40),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -53,19 +85,48 @@ class PerfilPetScreen extends StatelessWidget {
                   ],
                 )),
             Padding(
-                padding: EdgeInsets.symmetric(horizontal: 40),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      pet.descricao,
-                      style: TextStyle(
-                          fontFamily: "Monserrat",
-                          fontSize: 16,
-                          color: Colors.grey),
-                    )
-                  ],
-                ))
+              padding: EdgeInsets.symmetric(horizontal: 40),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    pet.descricao,
+                    style: const TextStyle(
+                        fontFamily: "Monserrat",
+                        fontSize: 16,
+                        color: Colors.grey),
+                  )
+                ],
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.only(top: 30),
+              height: 120,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: [
+                  _cartaoPet("Idade", pet.idade.toString()),
+                  _cartaoPet("Sexo", pet.sexo.toString()),
+                  _cartaoPet("Cor", pet.cor.toString()),
+                ],
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: 40, 
+                vertical: 25
+              ),
+              child: Text(
+                pet.bio,
+                style: TextStyle(
+                 fontFamily: "Montserrat",
+                 fontSize: 16,
+                 height: 1.5
+                ),
+                maxLines: 3,
+                overflow: TextOverflow.fade
+              ),
+            ),
           ],
         ),
       ),
