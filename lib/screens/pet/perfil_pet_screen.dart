@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lifepet_app/models/pet_model.dart';
+import 'package:lifepet_app/widgets/custom_navbar.dart';
 
 class PerfilPetScreen extends StatelessWidget {
   final Pet pet;
@@ -130,6 +131,7 @@ class PerfilPetScreen extends StatelessWidget {
           ],
         ),
       ),
+      bottomNavigationBar: CustomNavbar()
     );
   }
 }

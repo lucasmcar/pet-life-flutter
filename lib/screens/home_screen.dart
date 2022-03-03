@@ -19,7 +19,7 @@ class HomeScreen extends StatelessWidget {
           onPressed: () {
             Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (_) => FormPetScreen(),
+                builder: (_) => const FormPetScreen(),
               ),
             );
           },
