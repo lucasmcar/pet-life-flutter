@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
 
 class CustomNavbar extends StatefulWidget {
-  const CustomNavbar({Key? key}) : super(key: key);
+  late int openPage;
 
   @override
   _CustomNavbarState createState() => _CustomNavbarState();
 }
 
 class _CustomNavbarState extends State<CustomNavbar> {
+  late Widget currentPage;
+
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
+      color: Colors.white70,
+      shape: CircularNotchedRectangle(),
+      notchMargin: 10,
       child: Container(
         height: 60,
         child: Row(
@@ -20,38 +25,54 @@ class _CustomNavbarState extends State<CustomNavbar> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 MaterialButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    setState(() {
+                      widget.openPage = 0;
+                    });
+                  },
                   minWidth: 40,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Icon(
+                      Icon(
                         Icons.pets,
-                        color: Colors.redAccent,
+                        color: widget.openPage == 0
+                            ? Colors.redAccent
+                            : Colors.grey,
                       ),
-                      const Text(
+                      Text(
                         "Perfil",
                         style: TextStyle(
-                          color: Colors.redAccent,
+                          color: widget.openPage == 0
+                              ? Colors.redAccent
+                              : Colors.grey,
                         ),
                       ),
                     ],
                   ),
                 ),
                 MaterialButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    setState(() {
+                      widget.openPage = 1;
+                    });
+                  },
                   minWidth: 40,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Icon(
+                      Icon(
                         Icons.healing,
-                        color: Colors.redAccent,
+                        color: widget.openPage == 1
+                            ? Colors.redAccent
+                            : Colors.grey,
                       ),
-                      const Text(
+                      Text(
                         "Remédio",
                         style: TextStyle(
-                          color: Colors.redAccent,
+                          color: widget.openPage == 1
+                              ? Colors.redAccent
+                              : Colors.grey,
                         ),
                       ),
                     ],
@@ -64,15 +85,26 @@ class _CustomNavbarState extends State<CustomNavbar> {
               children: [
                 MaterialButton(
                   minWidth: 40,
-                  onPressed: () {},
+                  onPressed: () {
+                    setState(() {
+                      widget.openPage = 2;
+                    });
+                  },
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Icon(Icons.local_hospital, color: Colors.redAccent),
+                      Icon(
+                        Icons.local_hospital,
+                        color: widget.openPage == 2
+                            ? Colors.redAccent
+                            : Colors.grey,
+                      ),
                       Text(
                         "Consulta",
                         style: TextStyle(
-                          color: Colors.redAccent,
+                          color: widget.openPage == 2
+                              ? Colors.redAccent
+                              : Colors.grey,
                         ),
                       ),
                     ],
@@ -80,18 +112,26 @@ class _CustomNavbarState extends State<CustomNavbar> {
                 ),
                 MaterialButton(
                   minWidth: 40,
-                  onPressed: () {},
+                  onPressed: () {
+                    setState(() {
+                      widget.openPage = 3;
+                    });
+                  },
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Icon(
                         Icons.event_note,
-                        color: Colors.redAccent,
+                        color: widget.openPage == 3
+                            ? Colors.redAccent
+                            : Colors.grey,
                       ),
                       Text(
                         "Anotações",
                         style: TextStyle(
-                          color: Colors.redAccent,
+                          color: widget.openPage == 3
+                              ? Colors.redAccent
+                              : Colors.grey,
                         ),
                       ),
                     ],
