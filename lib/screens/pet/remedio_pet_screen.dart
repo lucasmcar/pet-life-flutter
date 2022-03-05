@@ -8,8 +8,7 @@ class RemedioPetScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      body: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Stack(
             children: [
               Hero(
@@ -24,35 +23,58 @@ class RemedioPetScreen extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(top: 40, left: 10),
+                padding: const EdgeInsets.only(top: 40, left: 10),
                 child: IconButton(
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
-                    icon: Icon(Icons.arrow_back),
+                    icon: const Icon(Icons.arrow_back),
                     color: Colors.white),
               ),
             ],
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 40),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
+              children: const [
                 Text(
                   "Remédios",
                   style: TextStyle(
                       fontFamily: "Montserrat",
                       fontSize: 24,
-                      fontWeight: FontWeight.bold
-                    ),
+                      fontWeight: FontWeight.bold),
                 ),
               ],
             ),
           ),
+          Expanded(
+              child: ListView(
+            children: [
+              Card(
+                elevation: 8.0,
+                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                child: Container(
+                  child: ListTile(
+                      contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                      leading: Container(
+                          padding: const EdgeInsets.only(right: 12),
+                          decoration: const BoxDecoration(
+                            border: Border(
+                              right: BorderSide(
+                                  width: 1.0, color: Colors.redAccent),
+                            ),
+                          ),
+                          child: const Icon(Icons.healing, color: Colors.redAccent)),
+                      title: Text(pet.nome,
+                          style: const TextStyle(fontWeight: FontWeight.w400)),
+                      subtitle: Text(pet.descricao)),
+                ),
+              ),
+            ],
+          )),
         ]),
-      ),
     );
   }
 }
