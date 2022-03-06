@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:lifepet_app/models/pet_model.dart';
 import 'package:lifepet_app/widgets/custom_navbar.dart';
 
+import 'form_remedio_pet_screen.dart';
+
 class RemedioPetScreen extends StatelessWidget {
   final Pet pet;
   RemedioPetScreen({required this.pet});
@@ -77,7 +79,13 @@ class RemedioPetScreen extends StatelessWidget {
           )),
         ]),
         floatingActionButton: FloatingActionButton(
-          onPressed: (){},
+          onPressed: (){
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (_) => FormRemedioPetScreen(pet: pet),
+              ),
+            );
+          },
           child: Icon(Icons.add),
           backgroundColor: Colors.redAccent,
         ),

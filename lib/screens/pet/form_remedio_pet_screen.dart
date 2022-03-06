@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:lifepet_app/models/pet_model.dart';
 
 class FormRemedioPetScreen extends StatelessWidget {
-  const FormRemedioPetScreen({Key? key}) : super(key: key);
+  Pet pet;
+  FormRemedioPetScreen({required this.pet});
 
   @override
   Widget build(BuildContext context) {
@@ -16,11 +18,13 @@ class FormRemedioPetScreen extends StatelessWidget {
               children: [
                 TextFormField(
                   keyboardType: TextInputType.text,
-                  decoration: const InputDecoration(labelText: "Nome do Remédio"),
+                  decoration:
+                      const InputDecoration(labelText: "Nome do Remédio"),
                 ),
                 TextFormField(
                   keyboardType: TextInputType.datetime,
-                  decoration: const InputDecoration(labelText: "Data do remédio"),
+                  decoration:
+                      const InputDecoration(labelText: "Data do remédio"),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 12, bottom: 10),
