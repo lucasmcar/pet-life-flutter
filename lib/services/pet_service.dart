@@ -4,7 +4,19 @@ class PetService {
   final List<Pet> _listPets = [];
 
   PetService() {
-    _listPets.add();
+    
+  }
+
+  void addPet(Pet pet) {
+    _listPets.add(Pet(
+      nome: pet.nome,
+      bio: pet.bio,
+      idade: pet.idade,
+      sexo: pet.sexo,
+      descricao: pet.descricao,
+      cor: pet.cor,
+      imageUrl: 'assets/images/toto.jpg'
+    ));
   }
 
   List getAllPets() {

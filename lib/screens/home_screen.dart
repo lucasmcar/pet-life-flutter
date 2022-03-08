@@ -49,14 +49,14 @@ class HomeScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Hero(
-                tag: pets[index].id,
+                tag: pets[index].id!,
                 child: Container(
                   width: double.infinity,
                   height: 250,
                   decoration: BoxDecoration(
                     borderRadius: const BorderRadius.all(Radius.circular(20)),
                     image: DecorationImage(
-                        image: AssetImage(pets[index].imageUrl),
+                        image: AssetImage(pets[index].imageUrl!),
                         fit: BoxFit.cover),
                   ),
                 ),

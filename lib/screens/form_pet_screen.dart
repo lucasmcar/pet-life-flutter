@@ -1,6 +1,9 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
+import 'package:lifepet_app/models/pet_model.dart';
+import 'package:lifepet_app/screens/home_screen.dart';
+import 'package:lifepet_app/services/pet_service.dart';
 
 class FormPetScreen extends StatefulWidget {
   const FormPetScreen({Key? key}) : super(key: key);
@@ -12,6 +15,13 @@ class FormPetScreen extends StatefulWidget {
 class _FormPetScreenState extends State<FormPetScreen> {
   String corPet = 'Branco';
   String sexoPet = 'Macho';
+
+  final _nomeController = TextEditingController();
+  final _bioController = TextEditingController();
+  final _idadeController = TextEditingController();
+  final _descricaoController = TextEditingController();
+  PetService service = PetService();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,17 +37,17 @@ class _FormPetScreenState extends State<FormPetScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 TextFormField(
-                  keyboardType: TextInputType.text,
-                  decoration: const InputDecoration(labelText: "Nome do Pet"),
-                ),
+                    keyboardType: TextInputType.text,
+                    decoration: const InputDecoration(labelText: "Nome do Pet"),
+                    controller: _nomeController),
                 TextFormField(
-                  keyboardType: TextInputType.text,
-                  decoration: const InputDecoration(labelText: "Bio"),
-                ),
+                    keyboardType: TextInputType.text,
+                    decoration: const InputDecoration(labelText: "Bio"),
+                    controller: _bioController),
                 TextFormField(
-                  keyboardType: TextInputType.number,
-                  decoration: const InputDecoration(labelText: "Idade"),
-                ),
+                    keyboardType: TextInputType.number,
+                    decoration: const InputDecoration(labelText: "Idade"),
+                    controller: _idadeController),
                 DropdownButtonFormField(
                   value: sexoPet,
                   onChanged: (String? sexoSelecionado) {
@@ -52,9 +62,9 @@ class _FormPetScreenState extends State<FormPetScreen> {
                   }).toList(),
                 ),
                 TextFormField(
-                  keyboardType: TextInputType.text,
-                  decoration: const InputDecoration(labelText: "Descrição"),
-                ),
+                    keyboardType: TextInputType.text,
+                    decoration: const InputDecoration(labelText: "Descrição"),
+                    controller: _descricaoController),
                 DropdownButtonFormField(
                   value: corPet,
                   onChanged: (String? corSelecionada) {
@@ -74,7 +84,18 @@ class _FormPetScreenState extends State<FormPetScreen> {
                     height: 40,
                     width: double.infinity,
                     child: RaisedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Pet newPet = Pet(
+                            nome: _nomeController.text,
+                            bio: _bioController.text,
+                            idade: int.parse(_idadeController.text),
+                            sexo: sexoPet,
+                            descricao: _descricaoController.text,
+                            cor: corPet);
+                        service.addPet(newPet);
+                        Navigator.of(context).push(
+                            MaterialPageRoute(builder: (_) => HomeScreen()));
+                      },
                       color: Colors.redAccent,
                       child: const Text(
                         "Cadastrar",

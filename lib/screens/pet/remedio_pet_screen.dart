@@ -15,13 +15,13 @@ class RemedioPetScreen extends StatelessWidget {
           Stack(
             children: [
               Hero(
-                tag: pet.id,
+                tag: pet.id!,
                 child: Container(
                   width: double.infinity,
                   height: 350,
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                        image: AssetImage(pet.imageUrl), fit: BoxFit.cover),
+                        image: AssetImage(pet.imageUrl!), fit: BoxFit.cover),
                   ),
                 ),
               ),
