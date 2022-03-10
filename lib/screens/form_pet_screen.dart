@@ -80,7 +80,7 @@ class _FormPetScreenState extends State<FormPetScreen> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 12, bottom: 10),
-                  child: Container(
+                  child: SizedBox(
                     height: 40,
                     width: double.infinity,
                     child: RaisedButton(
@@ -92,7 +92,7 @@ class _FormPetScreenState extends State<FormPetScreen> {
                             sexo: sexoPet,
                             descricao: _descricaoController.text,
                             cor: corPet);
-                        service.addPet(newPet);
+                        service.;
                         Navigator.of(context).push(
                             MaterialPageRoute(builder: (_) => HomeScreen()));
                       },
